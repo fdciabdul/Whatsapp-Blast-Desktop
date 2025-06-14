@@ -1,4 +1,12 @@
-# WhatsApp Blast Desktop
+
+
+<div align="center">
+<img src="build/icon.png" width="100">
+<h4> # WhatsApp Blast Desktop 
+</div>
+
+
+
 
 A modern desktop application for managing WhatsApp sessions and sending bulk messages. Built with Electron and designed with a sleek dark theme interface.
 
