@@ -1,0 +1,104 @@
+{
+  "name": "whatsapp-blast-manager",
+  "version": "1.0.0",
+  "description": "WhatsApp Blast Tool with Electron",
+  "main": "main.js",
+  "homepage": "./",
+  "author": {
+    "name": "Abdul Muttaqin",
+    "email": "cp@imtaqin.id"
+  },
+  "scripts": {
+    "start": "electron .",
+    "dev": "NODE_ENV=development electron .",
+    "build": "electron-builder --win --publish=never",
+    "build:win": "electron-builder --win --publish=never",
+    "dist": "electron-builder --publish=never",
+    "pack": "electron-builder --dir",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.6.0",
+    "qrcode": "^1.5.3",
+    "pino": "^8.17.2",
+    "node-json-db": "^2.3.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.whatsappblast.manager",
+    "productName": "WhatsApp Blast Manager",
+    "artifactName": "${productName}-Setup-${version}.${ext}",
+    "copyright": "Copyright © 2025 Your Company",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "main.js",
+      "preload.js", 
+      "index.html",
+      "renderer.js",
+      "crypto-polyfill.js",
+      "assets/**/*",
+      "services/**/*",
+      "node_modules/**/*",
+      "package.json",
+      "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}",
+      "!**/node_modules/*/{test,__tests__,tests,powered-test,example,examples}",
+      "!**/node_modules/*.d.ts",
+      "!**/node_modules/.bin",
+      "!**/*.{iml,o,hprof,orig,pyc,pyo,rbc,swp,csproj,sln,xproj}",
+      "!.editorconfig",
+      "!**/._*",
+      "!**/{.DS_Store,.git,.hg,.svn,CVS,RCS,SCCS,.gitignore,.gitattributes}",
+      "!**/{__pycache__,thumbs.db,.flowconfig,.idea,.vs,.nyc_output}",
+      "!**/{appveyor.yml,.travis.yml,circle.yml}",
+      "!**/{npm-debug.log,yarn.lock,.yarn-integrity,.yarn-metadata.json}"
+    ],
+    "extraResources": [
+      {
+        "from": "database",
+        "to": "database",
+
+        "filter": ["**/*"]
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "requestedExecutionLevel": "asInvoker",
+      "verifyUpdateCodeSignature": false
+    },
+   "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "installerHeaderIcon": "build/icon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "WhatsApp Blast",
+      "include": "build/installer.nsh",
+      "installerSidebar": "build/installerSidebar.bmp",
+      "uninstallerSidebar": "build/uninstallerSidebar.bmp",
+      "installerHeader": "build/installerHeader.bmp",
+      "uninstallDisplayName": "WABLAST - WhatsApp Blast Manager",
+      "deleteAppDataOnUninstall": true,
+      "runAfterFinish": true,
+      "menuCategory": "Tools"
+    }
+
+
+  }
+}
